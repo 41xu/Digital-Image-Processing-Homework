@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图像处理</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="container">
+    <section id="content">
+        <form role="form" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <p>选择图像进行直方图均衡化</p>
+                            <form>
+                                <input type="radio" name="image" value="gray">灰度图<br>
+                                <input type="radio" name="image" value="rgb">彩色图
+                            </form>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <input type="file" name="image1"><br>
+                            <input type="submit" value="上传">
+                        </div>
+                        {% if img1 %}
+                            <div class="col-md-6 col-sm-6">
+                                <p>原图如下</p>
+                                <img src="{{ origin_img_pth }}">
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <p>直方图均衡化结果如下</p>
+                                <img src="{{ res_img_pth }}">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+        </form>
+        <form role="form" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <p>选择图像进行拉普拉斯滤波</p>
+                        <form>
+                            <input type="file" name="image2"><br>
+                            <input type="submit" value="上传">
+                        </form>
+                    </div>
+                    {% if img2 %}
+                        <div class="col-md-6 col-sm-6">
+                            <p>原图如下</p>
+                            <img src="{{ origin_img_pth }}">
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <p>拉普拉斯滤波结果如下</p>
+                            <img src="{{ res_img_pth }}">
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+        <form role="form" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <p>选择图像进行相关性匹配</p>
+                        <form>
+                            匹配图像: <input type="file" name="image_match"><br>
+                            模版图像: <input type="file" name="image_template"><br>
+                            <input type="submit" value="上传">
+                        </form>
+                    </div>
+                    {% if img3 %}
+                        <div class="col-md-6 col-sm-6">
+                            <p>模版图像</p>
+                            <img src="{{ template_pth }}">
+                            <p>匹配图像</p>
+                            <img src="{{ origin_img_pth }}">
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <p>匹配结果</p>
+                            <img src="{{ res_img_pth }}">
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+</body>
+</html>
